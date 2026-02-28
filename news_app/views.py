@@ -33,10 +33,14 @@ def news_by_category(request, pk):
     return render(request, 'news-by-category.html', context)
 
 def search_page(request):
-    return render(request, 'search.html')
+    ads_list = list(Adv.objects.all())
+    advs = random.sample(ads_list, min(len(ads_list), 4))
+    return render(request, 'search.html', {'advs':advs})
 
 def search_results(request):
     query = (request.GET.get('q') or '').strip()
+    ads_list = list(Adv.objects.all())
+    advs = random.sample(ads_list, min(len(ads_list), 4))
     results = []
 
     if query:
@@ -48,6 +52,7 @@ def search_results(request):
     context = {
         'query': query,
         'results': results,
+        'advs': advs,
     }
 
     return render(request, 'search-results.html', context)

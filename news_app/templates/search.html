@@ -16,24 +16,12 @@
                 <div class="adv-block">
                     <h3>Advertising</h3>
                     <div class="adv-block-data">
+                        {% for adv in advs %}
                         <div class="adv-block__content">
-                            <img src="https://www.zakon.kz/pbi/WEBP/2023-12-25/file-d5bc4731-7b68-42ca-b19d-d491856ca0a8/800x450.webp" alt="">
+                            <img src="{{ adv.image_url }}"
+                                 alt="{{ adv.title }}">
                         </div>
-                    </div>
-                    <div class="adv-block-data">
-                        <div class="adv-block__content">
-                            <img src="./img/wingsadv.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="adv-block-data">
-                        <div class="adv-block__content">
-                            <img src="./img/macadv.jpg" alt="">
-                        </div>
-                    </div>
-                    <div class="adv-block-data">
-                        <div class="adv-block__content">
-                            <img src="./img/adv.jpg" alt="">
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
 
