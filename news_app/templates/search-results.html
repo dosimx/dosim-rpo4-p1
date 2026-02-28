@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ query }}{% endblock %}
+
+{% block content %}
+<section class="main-block">
+            <div class="container-fluid">
+                <div class="news-block">
+                    <h4>Search results “{{ query }}”</h4>
+                    {% if results %}
+                    {% for post in results %}
+                    <div class="news-block__card">
+                        <img src="{{ post.image_url }}" alt=""
+                             class="news-block__img">
+                        <div class="news-block__content">
+                            <h3>{{ post.title|truncatewords:10 }}</h3>
+                            <span>{{ post.created_at|date:"d.m.Y" }}</span>
+                            <a href="#">#{{ post.category.name }}</a>
+                            <p>{{ post.content|truncatewords:30 }}</p>
+                            <a href="#" class="uppercase">Read</a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="alert-danger">
+                        <h5>No Data</h5>
+                        <p>Try again or search some news</p>
+                    </div>
+                    {% endif %}
+
+                </div>
+                <div class="adv-block">
+                    <h3>Advertising</h3>
+                    <div class="adv-block-data">
+                        <div class="adv-block__content">
+                            <img src="https://www.zakon.kz/pbi/WEBP/2023-12-25/file-d5bc4731-7b68-42ca-b19d-d491856ca0a8/800x450.webp" alt="">
+                        </div>
+                    </div>
+                    <div class="adv-block-data">
+                        <div class="adv-block__content">
+                            <img src="./img/wingsadv.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="adv-block-data">
+                        <div class="adv-block__content">
+                            <img src="./img/macadv.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="adv-block-data">
+                        <div class="adv-block__content">
+                            <img src="./img/adv.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+{% endblock %}
